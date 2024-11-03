@@ -44,5 +44,12 @@ docker run \
  - Deploying the application
  - Recap and next steps
  ```bash
-
+cd /home/c2c/developers/my_repo/k8s_learnk8s/knote-js/03
+minikube status
+kubectl apply -f kube	
+kubectl get pods --watch	
+minikube service knote --url	
+	kubectl autoscale deploy/knote --min=2 --max=5 --cpu-percent=50
+	minikube dashboard
+kubectl delete -f kube	
  ```
