@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: knote
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: knote
@@ -33,3 +33,10 @@ spec:
             - name: MONGO_URL
               value: mongodb://mongo:27017/dev
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

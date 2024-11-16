@@ -49,7 +49,18 @@ minikube status
 kubectl apply -f kube	
 kubectl get pods --watch	
 minikube service knote --url	
-	kubectl autoscale deploy/knote --min=2 --max=5 --cpu-percent=50
+	kubectl autoscale deploy/knote --min=3 --max=5 --cpu-percent=50
 	minikube dashboard
-kubectl delete -f kube	
+kubectl delete -f kube
+
+# access pod
+kubectl exec -it pod/mongo-869db887b5-chspj -- bash
+
+# Truy cập Pod từ bên ngoài Cluster (Kiểm tra - Debug)
+# run proxy
+kubectl proxy
+http://127.0.0.1:8001/api/v1/namespaces/default/pods/knote-d58c7bcb6-m8cm8/proxy/
+
+# run minikube dashboard
+minikube dashboard
  ```
